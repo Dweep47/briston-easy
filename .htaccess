@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# If file does not exist, try adding .html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# Allow Next.js static folder
+RewriteCond %{REQUEST_URI} ^/_next/
+RewriteRule ^ - [L]

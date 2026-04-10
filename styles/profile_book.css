@@ -1,0 +1,51 @@
+
+    .book {
+      position:relative;
+      width:400px;
+      height:500px;
+      transform-style: preserve-3d;
+    }
+    input[type="radio"] {
+      display:none;
+    }
+    .book__page {
+      position:absolute;
+      width:50%;
+      height:100%;
+      background:#fff;
+      box-shadow:0 0 10px rgba(0,0,0,0.3);
+      overflow:hidden;
+      backface-visibility:hidden;
+      transform-style: preserve-3d;
+      transition: transform 1s;
+    }
+    .book__page--left {
+      left:0;
+      transform-origin: right;
+    }
+    .book__page--right {
+      left:50%;
+      transform-origin: left;
+    }
+
+    /* flipping logic */
+    #page-2:checked ~ .book .book__page--2 {
+      transform: rotateY(-180deg);
+    }
+    #page-4:checked ~ .book .book__page--4 {
+      transform: rotateY(-180deg);
+    }
+
+    /* stacking order example */
+    .book__page--1 { z-index:4; }
+    .book__page--2 { z-index:3; }
+    .book__page--3 { z-index:2; }
+    .book__page--4 { z-index:1; }
+
+    .page__number {
+      position:absolute;
+      bottom:10px;
+      right:10px;
+      color:#777;
+      font-size:0.9rem;
+    }
